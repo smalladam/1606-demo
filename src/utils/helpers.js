@@ -11,10 +11,9 @@ function searchGit (add) {
     });
 }
 
-export { searchGit };
 
 function getJson() {
-  let address = `https://raw.githubusercontent.com/smalladam/demodata/master/Card.json`;
+  let address = `https://raw.githubusercontent.com/smalladam/demodata/master/Card.json?${Math.random()}`;
   return axios.get(address)
     .then( (res) => (
       { getJson:res.data }
@@ -24,4 +23,15 @@ function getJson() {
     });
 }
 
-export { getJson };
+function getMd(add) {
+  let address = `https://raw.githubusercontent.com/smalladam/demodata/master/blog/${add}.md`;
+  return axios.get(address)
+    .then( (res) => (
+      { getMd:res.data }
+    ))
+    .catch(function (error) {
+      alert(error);
+    });
+}
+
+export { searchGit,getJson,getMd };
